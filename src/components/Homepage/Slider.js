@@ -23,7 +23,7 @@ export default class Slider extends Component {
 
   nextSlide() {
     if (this.state.slideCount === 5) {
-      this.setState({ slideCount: this.state.slideCount = 1})
+      this.setState({ slideCount: 1})
     }
     else {
       this.setState({ slideCount: this.state.slideCount + 1 })
@@ -32,7 +32,7 @@ export default class Slider extends Component {
 
   previousSlide() {
     if (this.state.slideCount === 1) {
-      this.setState({ slideCount: this.state.slideCount = 5})
+      this.setState({ slideCount: 5})
     }
     else {
       this.setState({ slideCount: this.state.slideCount - 1 })
