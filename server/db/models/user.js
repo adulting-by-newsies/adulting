@@ -15,20 +15,19 @@ const userSchema = new Schema({
 		googleId: { type: String, required: false }
 	},
 	friendList: {
-    type: [String]
+    type: String,
     default: undefined
   },
   dailyScore: {
     type: {type: Date, type: Number},
-    required: true
+    required: false
   },
   totalScore: {
-    type: Number
+    type: Number,
     default: 0
   },
   savedArticles: {
-    type: {type: Schema.Types.ObjectId, type: String}
-    default: undefined
+    type: {type: [Schema.Types.ObjectId], type: String}
   }
 	// local: {
 	// 	email: { type: String, unique: true },
