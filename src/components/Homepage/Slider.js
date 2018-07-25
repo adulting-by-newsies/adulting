@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import SlideOne from './SlideOne';
 import SlideTwo from './SlideTwo';
@@ -23,11 +22,21 @@ export default class Slider extends Component {
   }
 
   nextSlide() {
+    if (this.state.slideCount === 5) {
+      this.setState({ slideCount: this.state.slideCount = 1})
+    }
+    else {
       this.setState({ slideCount: this.state.slideCount + 1 })
+    }
   }
 
   previousSlide() {
+    if (this.state.slideCount === 1) {
+      this.setState({ slideCount: this.state.slideCount = 5})
+    }
+    else {
       this.setState({ slideCount: this.state.slideCount - 1 })
+    }
   }
 
   render() {
