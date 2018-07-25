@@ -55,10 +55,12 @@ class LoginForm extends Component {
 						/>
 						<button onClick={this.handleSubmit}>Login</button>
 					</form>
+					{/* Uncomment here to try to get Google stuff working
 					<a href="/auth/google">
-						{/* <GoogleButton /> */}
+						
 						<img src={googleButton} alt="sign into Google Button" />
 					</a>
+					*/}
 				</div>
 			)
 		}
