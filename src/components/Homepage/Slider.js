@@ -26,7 +26,7 @@ export default class Slider extends Component {
 
   }
 
-  componentDidMount: function(){
+  componentDidMount(){
     this.fetchArticles();
   }
 

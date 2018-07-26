@@ -6,7 +6,7 @@ import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
-impoty Slider from './components/Homepage/Slider'
+import Slider from './components/Homepage/Slider'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
