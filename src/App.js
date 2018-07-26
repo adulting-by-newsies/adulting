@@ -112,9 +112,9 @@ class App extends Component {
 	}
 
 	render() {
-		if({this.state.loggedIn}){
+		if(this.state.loggedIn){
 			return(
-				<Route exact path = '/slides' component={Slider} />
+				<Slider>
 			)
 		}else{
 			return (
@@ -138,6 +138,7 @@ class App extends Component {
 					<Route exact path="/signup" component={SignupForm} />
 					{/* <LoginForm _login={this._login} /> */}
 				</div>
+			)
 			}
 		)
 	}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SlideLoading from './SlideLoading'
 import SlideOne from './SlideOne';
 import SlideTwo from './SlideTwo';
 import SlideThree from './SlideThree';
@@ -6,11 +7,9 @@ import SlideFour from './SlideFour';
 import SlideFive from './SlideFive';
 import RightArrow from './RightArrow';
 import LeftArrow from './LeftArrow';
+import axios from 'axios'
 
-
-export default class Slider extends Component {
-
-
+class Slider extends Component {
   constructor(props) {
     super(props);
 
@@ -23,10 +22,10 @@ export default class Slider extends Component {
 
     this.nextSlide = this.nextSlide.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
-
   }
 
   componentDidMount(){
+    console.log('component mounted')
     this.fetchArticles();
   }
 
@@ -39,13 +38,13 @@ export default class Slider extends Component {
   }
 
 
-  setPreferredArray(){
+  setPreferredArray() {
     this.setState({prefArray: this.state.user.preferredCat})
   }
 
   nextSlide() {
     if (this.state.slideCount === 5) {
-      this.setState({ slideCount: this.state.slideCount = 1})
+      this.setState({ slideCount: 1})
     }
     else {
       this.setState({ slideCount: this.state.slideCount + 1 })
@@ -54,14 +53,14 @@ export default class Slider extends Component {
 
   previousSlide() {
     if (this.state.slideCount === 1) {
-      this.setState({ slideCount: this.state.slideCount = 5})
+      this.setState({ slideCount: 5})
     }
     else {
       this.setState({ slideCount: this.state.slideCount - 1 })
     }
   }
 
-  getCategoryArticles(preference){
+  getCategoryArticles(preference) {
     var arr = []
     this.state.article.forEach(elem => {
       if(elem.category ===  preference){
@@ -69,32 +68,36 @@ export default class Slider extends Component {
       }
     })
 
-    return articleChooser(arr)
+    return this.articleChooser(arr)
   }
 
-  articleChooser(array){
+  articleChooser(array) {
     return array[this.state.articleCount]
   }
 
-  updateArticleCount(){
+  updateArticleCount() {
     this.setState({articleCount: Math.floor(Math.random() * 10)});
-    
   }
 
   render() {
     return (
-      <div className="slider">
-        { this.state.articles === null ? <SlideLoading/> : null}
-        { this.state.slideCount === 1 ? <SlideOne category = {this.state.prefArray[0]} articles = {getCategoryArticles(this.state.prefArray[0])}}/> : null }
-        { this.state.slideCount === 2 ? <SlideTwo category = {this.state.prefArray[1]} articles = {getCategoryArticles(this.state.prefArray[1])}}/> : null }
-        { this.state.slideCount === 3 ? <SlideThree category = {this.state.prefArray[2]} articles = {getCategoryArticles(this.state.prefArray[2])}}/> : null }
-        { this.state.slideCount === 4 ? <SlideFour category = {this.state.prefArray[3]} articles = {getCategoryArticles(this.state.prefArray[3])}}/> : null }
-        { this.state.slideCount === 5 ? <SlideFive category = {this.state.prefArray[4]} articles = {getCategoryArticles(this.state.prefArray[4])}}/> : null }
-				//<RefreshButton onClick={updateArticleCount} />
-        <RightArrow nextSlide={this.nextSlide} />
-        <LeftArrow previousSlide={this.previousSlide} />
+      <div>
+        <h1>WE BE HERE</h1>
+        <Slider>
+          { this.state.articles === null ? <SlideLoading/> : null}
+          { this.state.slideCount === 1 ? <SlideOne category = {this.state.prefArray[0]} articles = {this.getCategoryArticles(this.state.prefArray[0])}/> : null }
+          { this.state.slideCount === 2 ? <SlideTwo category = {this.state.prefArray[1]} articles = {this.getCategoryArticles(this.state.prefArray[1])}/> : null }
+          { this.state.slideCount === 3 ? <SlideThree category = {this.state.prefArray[2]} articles = {this.getCategoryArticles(this.state.prefArray[2])}/> : null }
+          { this.state.slideCount === 4 ? <SlideFour category = {this.state.prefArray[3]} articles = {this.getCategoryArticles(this.state.prefArray[3])}/> : null }
+          { this.state.slideCount === 5 ? <SlideFive category = {this.state.prefArray[4]} articles = {this.getCategoryArticles(this.state.prefArray[4])}/> : null }
+  				
+          <RightArrow nextSlide={this.nextSlide} />
+          <LeftArrow previousSlide={this.previousSlide} />
 
+        </Slider>
       </div>
     );
   }
 }
+
+export default Slider
