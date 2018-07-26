@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session)
 const dbConnection = require('./db') // loads our connection to the mongo database
 const passport = require('./passport')
 const app = express()
+const newsAPI = require('./API/newsAPI');
 const PORT = process.env.PORT || 8080
 
 // ===== Middleware ====
@@ -77,6 +78,19 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack)
 	res.status(500)
 })
+
+// var scrapedData = newsAPI.scrapeArticles();
+// console.log('====== DATA SCRAPE SUCCESSFUL =======')
+// console.log(scrapedData)
+// if (!newsAPI.scraping === undefined){
+	console.log("LAUGHS IN JAVASCRIPT")
+	var results = [];
+	results = newsAPI.scraping();
+	console.log('====== BEGIN RESULTS =======');
+	console.log(results);
+	console.log('====== END RESULTS =======');
+
+// }
 
 // ==== Starting Server =====
 app.listen(PORT, () => {
