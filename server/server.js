@@ -86,7 +86,10 @@ app.use(function(err, req, res, next) {
 	console.log("LAUGHS IN JAVASCRIPT")
 	var results = [];
 	results = newsAPI.scraping();
-	console.log(results)
+	console.log('====== BEGIN RESULTS =======');
+	console.log(results);
+	console.log('====== END RESULTS =======');
+
 // }
 
 // ==== Starting Server =====
