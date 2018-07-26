@@ -2,6 +2,8 @@ require('dotenv').config()
 var axios = require("axios");
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
+const interestCategoriesTop = ["sports", "politics","science", "technology", "health", "business"]
+const interestCategoriesEverything = ["culture", "worldnews","cooking", "lifestyle"]
 
 function scrapeArticles() {
 	var results = [];
